@@ -1,0 +1,72 @@
+/* This wrapper sits fixed on top of the video, filling the screen,
+   but has no background of its own — it's just a positioning layer. */
+.text-overlay-wrapper {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  pointer-events: none; /* lets scroll/clicks pass through to the page underneath */
+  z-index: 5; /* above the video (which has no z-index / sits below), below the header */
+}
+
+/* Each scene is absolutely positioned inside that fixed wrapper.
+   Only one is ever meaningfully visible at a time because of the
+   opacity animation — but they all technically exist in the DOM
+   at the same time, stacked on top of each other. */
+.text-scene {
+  position: absolute;
+  top: 50%;
+  max-width: 420px;
+  transform: translateY(-50%); /* base vertical centering; the animated "y" from Framer Motion adds on top of this */
+  padding: 0 60px;
+}
+
+.scene-left {
+  left: 0;
+  text-align: left;
+}
+
+.scene-right {
+  right: 0;
+  text-align: right;
+}
+
+.text-scene .eyebrow {
+  font-family: var(--font-body);
+  font-size: 0.8rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--antique-gold);
+  margin: 0 0 12px;
+}
+
+.text-scene h2 {
+  font-family: var(--font-heading);
+  font-size: 2.4rem;
+  font-weight: 500;
+  color: var(--warm-ivory);
+  margin: 0 0 16px;
+  line-height: 1.15;
+}
+
+.text-scene .body {
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  color: var(--steel-silver);
+  line-height: 1.6;
+  margin: 0;
+}
+
+/* On smaller screens, keep text from overlapping the centred watch —
+   pull it fully to the edges and shrink the heading a bit. */
+@media (max-width: 768px) {
+  .text-scene {
+    max-width: 260px;
+    padding: 0 24px;
+  }
+
+  .text-scene h2 {
+    font-size: 1.6rem;
+  }
+}

@@ -1,0 +1,69 @@
+.collection-page {
+  padding: 100px 60px;
+}
+
+.collection-header {
+  text-align: center;
+  max-width: 600px;
+  margin: 0 auto 60px;
+}
+
+.collection-header .eyebrow {
+  font-family: var(--font-body);
+  font-size: 0.8rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--antique-gold);
+  margin: 0 0 12px;
+}
+
+.collection-header h2 {
+  font-size: 2.6rem;
+  font-weight: 500;
+  color: var(--warm-ivory);
+  margin: 0 0 16px;
+}
+
+.collection-header p {
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  color: var(--steel-silver);
+  line-height: 1.6;
+  margin: 0;
+}
+
+/* The actual grid — 3 cards in a row on desktop */
+.collection-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 32px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* Tablet — 2 columns so cards don't get too cramped */
+@media (max-width: 1024px) {
+  .collection-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .collection-page {
+    padding: 80px 40px;
+  }
+}
+
+/* Mobile — stack vertically, per the spec */
+@media (max-width: 768px) {
+  .collection-grid {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+
+  .collection-page {
+    padding: 60px 24px;
+  }
+
+  .collection-header h2 {
+    font-size: 2rem;
+  }
+}

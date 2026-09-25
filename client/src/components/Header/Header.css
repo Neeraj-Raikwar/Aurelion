@@ -1,0 +1,140 @@
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 24px 60px;
+  z-index: 1000;
+
+  background: rgba(5, 5, 5, 0.75);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+
+  border-bottom: 1px solid rgba(184, 145, 85, 0.15);
+  box-sizing: border-box;
+}
+
+.header .logo {
+  font-family: var(--font-heading);
+  font-size: 1.5rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  color: var(--warm-ivory);
+  text-decoration: none;
+  z-index: 1001; /* stays above the mobile menu overlay */
+}
+
+.header .nav {
+  display: flex;
+  gap: 32px;
+}
+
+.header .nav a {
+  font-family: var(--font-body);
+  font-size: 0.85rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--steel-silver);
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.header .nav a:hover {
+  color: var(--warm-ivory);
+}
+
+.header .reserve-btn {
+  font-family: var(--font-body);
+  font-size: 0.8rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--antique-gold);
+  background: transparent;
+  border: 1px solid var(--antique-gold);
+  padding: 10px 24px;
+  text-decoration: none;
+  transition: background 0.3s ease, color 0.3s ease;
+  white-space: nowrap; /* prevents "Reserve" from wrapping/cutting oddly */
+}
+
+.header .reserve-btn:hover {
+  background: var(--antique-gold);
+  color: var(--deep-black);
+}
+
+/* Hamburger icon — hidden on desktop by default */
+.hamburger {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 8px;
+  z-index: 1001;
+}
+
+.hamburger span {
+  width: 24px;
+  height: 2px;
+  background: var(--warm-ivory);
+}
+
+/* The mobile-only Reserve link inside the dropdown menu —
+   hidden on desktop since the real .reserve-btn already shows there */
+.reserve-btn-mobile {
+  display: none;
+}
+
+/* ============ MOBILE BREAKPOINT ============ */
+@media (max-width: 768px) {
+  .header {
+    padding: 20px 24px;
+  }
+
+  /* Hide the desktop nav row and the desktop Reserve button... */
+  .header > .reserve-btn {
+    display: none;
+  }
+
+  /* ...and show the hamburger icon instead */
+  .hamburger {
+    display: flex;
+  }
+
+  /* By default (menu closed), the nav is completely hidden off-screen */
+  .header .nav {
+    position: fixed;
+    top: 0;
+    right: -100%; /* pushed off-screen to the right */
+    width: 70%;
+    max-width: 300px;
+    height: 100vh;
+    background: rgba(5, 5, 5, 0.97);
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 28px;
+    padding: 40px;
+    transition: right 0.35s ease; /* animates the slide-in/out */
+    box-sizing: border-box;
+  }
+
+  /* When menuOpen is true, App.jsx adds the "open" class,
+     which slides the menu fully into view. */
+  .header .nav.open {
+    right: 0;
+  }
+
+  .reserve-btn-mobile {
+    display: inline-block;
+    margin-top: 12px;
+    color: var(--antique-gold);
+    border: 1px solid var(--antique-gold);
+    padding: 10px 24px;
+    text-decoration: none;
+  }
+}

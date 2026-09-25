@@ -1,0 +1,22 @@
+:root {
+  --deep-black: #050505;
+  --soft-black: #0B0908;
+  --graphite: #15161A;
+  --warm-ivory: #EFE6D7;
+  --antique-gold: #B89155;
+  --steel-silver: #C7CBD1;
+
+  --font-heading: 'Cormorant Garamond', serif;
+  --font-body: 'Inter', sans-serif;
+}
+
+body {
+  background-color: var(--deep-black);
+  color: var(--warm-ivory);
+  font-family: var(--font-body);
+  margin: 0;
+}
+
+h1, h2, h3 {
+  font-family: var(--font-heading);
+}

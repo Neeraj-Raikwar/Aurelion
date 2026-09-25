@@ -1,0 +1,86 @@
+.product-card {
+  background: linear-gradient(180deg, var(--graphite), var(--soft-black));
+  border: 1px solid rgba(184, 145, 85, 0.2); /* subtle gold border, low opacity */
+  border-radius: 28px;
+  padding: 32px 24px;
+  text-align: center;
+  overflow: hidden;
+  position: relative;
+  transition: transform 0.4s ease, border-color 0.4s ease;
+}
+
+.product-card:hover {
+  transform: translateY(-6px);
+  border-color: rgba(184, 145, 85, 0.5); /* gold border brightens on hover */
+}
+
+.product-card img {
+  width: 100%;
+  max-width: 260px;
+  height: auto;
+  object-fit: contain;
+  margin-bottom: 24px;
+  transition: transform 0.6s ease;
+}
+
+.product-card:hover img {
+  transform: scale(1.06); /* slow zoom on hover */
+}
+
+.product-card h3 {
+  font-size: 1.8rem;
+  font-weight: 500;
+  margin: 0 0 4px;
+  color: var(--warm-ivory);
+}
+
+.product-card .subtitle {
+  font-family: var(--font-body);
+  font-size: 0.75rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--steel-silver);
+  margin: 0 0 16px;
+}
+
+.product-card .highlights {
+  font-family: var(--font-body);
+  font-size: 0.85rem;
+  color: var(--antique-gold);
+  margin: 0 0 20px;
+}
+
+.product-card .discover-link {
+  display: inline-block;
+  font-family: var(--font-body);
+  font-size: 0.8rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--warm-ivory);
+  text-decoration: none;
+  border-bottom: 1px solid var(--antique-gold);
+  padding-bottom: 2px;
+  transition: color 0.3s ease;
+}
+
+.product-card .discover-link:hover {
+  color: var(--antique-gold);
+}
+
+/* subtle directional light glow on hover — sits behind the content */
+.product-card::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle, rgba(184, 145, 85, 0.08), transparent 60%);
+  opacity: 0;
+  transition: opacity 0.5s ease;
+  pointer-events: none;
+}
+
+.product-card:hover::before {
+  opacity: 1;
+}
