@@ -3,15 +3,19 @@ const nodemailer = require('nodemailer');
 // This function sends you (the site owner) an email every time
 // someone submits the enquiry form.
 const sendEnquiryEmail = async (enquiry) => {
-  // A "transporter" is nodemailer's term for the email-sending
-  // connection — here we're using Gmail's SMTP server.
-  // service: 'gmail' automatically fills in Gmail's host/port,
-  // so we only need to give it the login credentials.
+  // Using explicit host/port instead of service: 'gmail', PLUS forcing
+  // family: 4 (IPv4). This fixes a common issue on hosts like Render,
+  // where the server tries to connect to Gmail over IPv6 first and
+  // fails with ENETUNREACH because the hosting provider doesn't
+  // support outbound IPv6 — forcing IPv4 skips that broken path entirely.
   const transporter = nodemailer.createTransport({
-    service: 'gmail',
+    host: 'smtp.gmail.com',
+    port: 465,
+    secure: true, // true for port 465, false for port 587
+    family: 4,    // force IPv4 — this is the actual fix for ENETUNREACH
     auth: {
       user: process.env.EMAIL_USER, // your Gmail address
-      pass: process.env.EMAIL_PASS, // a Gmail "App Password" (NOT your normal password — see note below)
+      pass: process.env.EMAIL_PASS, // a Gmail "App Password" (NOT your normal password)
     },
   });
 
