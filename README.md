@@ -56,7 +56,13 @@ EMAIL_USER=your_email
 \`\`\`
 
 ## Screenshots
-(add 2-3 screenshots here — hero section, collection page, product detail)
+<img width="1895" height="902" alt="image" src="https://github.com/user-attachments/assets/d6703913-61d8-4e5c-af2b-372bf73ef7b2" />
+<img width="1917" height="927" alt="image" src="https://github.com/user-attachments/assets/1788c23e-81b0-455a-836e-f3c9c541fe9e" />
+<img width="1917" height="906" alt="image" src="https://github.com/user-attachments/assets/9325b6b4-da26-4a61-918e-f8382a8d1afe" />
+<img width="1901" height="915" alt="image" src="https://github.com/user-attachments/assets/93bf70a2-02bb-476f-9ff6-1d18282f5eae" />
+<img width="1893" height="881" alt="image" src="https://github.com/user-attachments/assets/24c54db2-02fe-4c10-bec5-e82d8a7d3cce" />
+<img width="1916" height="782" alt="image" src="https://github.com/user-attachments/assets/941be708-8d65-4e23-8c3d-c42d3b3bb9bf" />
+
 
 ## What I Learned
 - Building smooth scroll-linked video playback using requestAnimationFrame and linear interpolation
