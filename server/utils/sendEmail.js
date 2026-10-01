@@ -10,7 +10,7 @@ const resend = new Resend(process.env.RESEND_API_KEY);
 
 const sendEnquiryEmail = async (enquiry) => {
   await resend.emails.send({
-   
+
     from: 'AURELION Website <onboarding@resend.dev>',
     to: process.env.EMAIL_USER, // your own email — where you want to RECEIVE enquiries
     subject: `New Enquiry — ${enquiry.model || 'General'}`,
@@ -18,8 +18,6 @@ const sendEnquiryEmail = async (enquiry) => {
       <h2>New Consultation Request</h2>
       <p><strong>Name:</strong> ${enquiry.name}</p>
       <p><strong>Email:</strong> ${enquiry.email}</p>
-      <p><strong>Phone:</strong> ${enquiry.phone || 'Not provided'}</p>
-      <p><strong>Model:</strong> ${enquiry.model || 'General'}</p>
       <p><strong>Message:</strong></p>
       <p>${enquiry.message}</p>
     `,
