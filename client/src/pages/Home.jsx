@@ -1,7 +1,7 @@
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { useRef } from 'react';
 import TextOverlaySequence from '../components/TextOverlaySequence/TextOverlaySequence';
-import useScrollVideoScrub from '../hooks/useScrollVideoScrub';
+import useScrollImageSequence from '../hooks/useScrollImageSequence';
 
 function Home() {
   const containerRef = useRef(null);
@@ -11,7 +11,8 @@ function Home() {
     offset: ['start start', 'end end'],
   });
 
-  const videoRef = useScrollVideoScrub();
+  // 900 frames, from frame_0001.webp to frame_0900.webp
+  const canvasRef = useScrollImageSequence(900, '/video/frames/frame_', '.webp');
 
   // ---------------------------------------------------------
   // HERO ENDING TRANSITION
@@ -31,24 +32,19 @@ function Home() {
   return (
     <div ref={containerRef} style={{ height: '700vh', position: 'relative' }}>
 
-      {/* This motion.div wraps BOTH the video and the dark overlay,
+      {/* This motion.div wraps BOTH the canvas and the dark overlay,
           so heroOpacity fades them out together as one unit. */}
       <motion.div style={{ opacity: heroOpacity, position: 'fixed', top: 0, left: 0, width: '100%', height: '100vh' }}>
 
-        <video
-          ref={videoRef}
-          src="/video/aurelion-formation-scrub.mp4"
-          muted
-          playsInline
-          preload="auto"
+        <canvas
+          ref={canvasRef}
           style={{
             position: 'absolute', // relative to the motion.div wrapper above, which is already fixed
             top: 0,
             left: 0,
             width: '100%',
             height: '100%',
-            objectFit: 'cover',
-            pointerEvents: 'none', // video has no controls, so let clicks/scroll pass straight through it
+            pointerEvents: 'none', // canvas has no interactions, so let clicks/scroll pass straight through it
           }}
         />
 
